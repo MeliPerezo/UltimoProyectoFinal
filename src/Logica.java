@@ -36,7 +36,7 @@ public class Logica {
             for(int  i = 0; i < cantidadDeCajas; i++) {
                 if (!cajero[i].estaocupada()) {
                     Cliente cliente = prioridad.poll();
-                    cliente.generarTiempo(); 
+                    cliente.generarTiempo();
                     cajero[i].cliente = cliente;
                     if(cajero[i].cliente != null){
                         cajero[i].cliente.enCaja = true;
@@ -48,7 +48,9 @@ public class Logica {
         if(!noprioridad.isEmpty()) {
             for (int i = 0; i < cantidadDeCajas; i++) {
                 if (!cajero[i].estaocupada()) {
-                    cajero[i].cliente = noprioridad.poll();
+                    Cliente cliente = noprioridad.poll();
+                    cliente.generarTiempo();
+                    cajero[i].cliente = cliente;
                     cajero[i].cliente.enCaja = true;
                 }
 
@@ -88,7 +90,7 @@ public class Logica {
                     cajero[e].cliente = cliente;
                     cliente.enCaja = true;
                     agregadoCaja = true;
-                    System.out.println("Cliente numero :" + cliente.numeroCliente + " de cola  prioridad  a la caja " + e + " con un tiempo de tramite de: " + cliente.tiempoTramite);
+                    System.out.println("Cliente numero :" + cliente.numeroCliente + " de cola  prioridad a la caja " + e + " con un tiempo de tramite de: " + cliente.tiempoTramite);
                     break;
                 }
             }
@@ -131,6 +133,7 @@ public class Logica {
                 String[] Personas = lector.nextLine().split(",");
 
                Cliente cliente;
+               System.out.println("-------------------------------------------------------------------------");;
                System.out.println("\n\nMinuto " + contador + "\n\n");
                contador++;
 
@@ -149,6 +152,7 @@ public class Logica {
             for(int  i =0; i < listaClientes.size(); i++){
             contadorTiempos += listaClientes.get(i).tiempoCola;
         }
+        System.out.println("-------------------------------------------------------------------------");
         System.out.println("\t\t# Promedio de tiempo en colas: " + contadorTiempos/listaClientes.size());
     }
     public void obtenerTiempoPromedioTramites(){
@@ -157,7 +161,7 @@ public class Logica {
     public void obtenerTiempoPromedioTotal(){
         int contadorTiempos  = 0;
             for(int  i =0; i < listaClientes.size(); i++){
-            contadorTiempos += listaClientes.get(i).tiempoTranscurrido + listaClientes.get(i).tiempoCola;
+            contadorTiempos += listaClientes.get(i).tiempoTramite + listaClientes.get(i).tiempoCola;
         }
         System.out.println("\t\t# Promedio de tiempo total: " + contadorTiempos/listaClientes.size());
     }
@@ -170,7 +174,7 @@ public class Logica {
                 contadorTiempos += listaClientes.get(i).tiempoCola;
             }
         }
-        System.out.println("\t\t# Personas que se quedaron en cola: " + contadorPersonasCola + ", promedio de tiempo total en cola: " + Math.round(contadorTiempos/contadorPersonasCola) );
+        System.out.println("\t\t# Personas que se quedaron en cola: " + contadorPersonasCola + "\n , promedio de tiempo total en cola: " +contadorTiempos/contadorPersonasCola);
     }
 }
 
