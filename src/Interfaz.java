@@ -12,7 +12,7 @@ public class Interfaz {
         System.out.println("\n\t*** Inicio de la simulacion ***\n");
         System.out.println("  Ingrese el numero de cajas:  ");
         cantidadCajas = input.nextInt();
-        L.CargarDatos(cantidadCajas);
+        L.cargarDatos(cantidadCajas);
         L.obtenerTiempoPromedioColas();
         L.obtenerTiempoPromedioTramites();
         L.obtenerTiempoPromedioTotal();

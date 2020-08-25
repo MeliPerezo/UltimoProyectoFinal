@@ -35,19 +35,4 @@ public class Cliente {
         tiempoTramite = (int) (13 + (13 * Math.random()));
     }
 
-    public int getTiempoTramite() {
-        return tiempoTramite;
-    }
-
-    public void setTiempoTramite(int tiempoTramite) {
-        this.tiempoTramite = tiempoTramite;
-    }
-
-    public int getTiempoCola() {
-        return tiempoCola;
-    }
-
-    public void setTiempoCola(int tiempoCola) {
-        this.tiempoCola = tiempoCola;
-    }
 }
